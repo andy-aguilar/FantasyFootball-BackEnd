@@ -1,0 +1,3 @@
+class Season {
+    init()
+}
