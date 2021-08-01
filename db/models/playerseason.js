@@ -10,7 +10,14 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      PlayerSeason.belongsTo(models.Player, {
+        foreignKey: "playerId",
+        onDelete: "CASCADE"
+      })
+      PlayerSeason.belongsTo(models.Season, {
+        foreignKey: "seasonId",
+        onDelete: "CASCADE"
+      })
     }
   };
   PlayerSeason.init({

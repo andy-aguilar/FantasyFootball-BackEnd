@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   League.init({
     name: DataTypes.STRING,
-    active: DataTypes.BOOLEAN
+    active: DataTypes.BOOLEAN,
+    espnId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'League',
