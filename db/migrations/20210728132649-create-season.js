@@ -14,13 +14,6 @@ module.exports = {
       },
       leagueId: {
         type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: 'leagues',
-            schema: 'schema'
-          },
-          key: 'id'
-        },
         allowNull: false
       },
       createdAt: {
