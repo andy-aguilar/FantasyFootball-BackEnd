@@ -11,9 +11,7 @@ async function getData() {
     function range(size, startAt=0){
         return [...Array(size).keys()].map(i => i+startAt)
     }
-    const date = new Date().getFullYear()
-    const size = date - 2018
-    const array = range(size, 2018)
+
 
     const getLeagueInfo = async (espnId) => {
         const [league, created] = await League.findOrCreate({where: {espnId: espnId}})
@@ -41,7 +39,6 @@ async function getData() {
         const members = leagueData.data.members
         const teams = leagueData.data.teams
 
-        // console.log("Members:", members)
         console.log("Teams:", teams)
         teams.forEach(team => {
             const owners = members.filter((member) => team.owners.includes(member.id))
@@ -53,12 +50,23 @@ async function getData() {
                 playerSeason.teamId = team.id
                 playerSeason.teamName = name
                 const ps = await playerSeason.save()
-                console.log(ps)
             })
         })
     }
 
-    getSingleSeasonData(league, 2018)
+    const getRecentSeasons = () => {
+        const date = new Date().getFullYear()
+        const size = date - 2018
+        const array = range(size, 2018)
+        
+        array.forEach(year => {
+            getSingleSeasonData(league, year)
+        })
+    }
+
+    getRecentSeasons()
+
+    // getSingleSeasonData(league, 2018)
 
     // try{
     //     let leagueData = await axios.get("https://fantasy.espn.com/apis/v3/games/ffl/seasons/2021/segments/0/leagues/104204", {
