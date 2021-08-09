@@ -9,8 +9,8 @@ const app = express()
 const PORT = 8000
 
 const start = async function(){
-    let lg = await League.findOne()
-    EspnApiConn.getOldSeason(lg)
+    let lg = await EspnApiConn.getLeagueInfo("104204")
+    EspnApiConn.getSeasons(lg)
 }()
 
 
