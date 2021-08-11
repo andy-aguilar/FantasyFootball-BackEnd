@@ -8,4 +8,5 @@ My Id for SC 2019
 '{EA55B21B-57D7-4D03-A64A-2A3C50A10022}'
 '{EA55B21B-57D7-4D03-A64A-2A3C50A10022}' 
 
-Find team ID for each owner
+page.on("domcontentloaded", () => {console.log("loaded")})
+

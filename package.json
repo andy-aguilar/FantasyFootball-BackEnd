@@ -17,6 +17,7 @@
     "mongodb": "^4.0.1",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
+    "puppeteer": "^10.2.0",
     "sequelize": "^6.6.5",
     "sequelize-cli": "^6.2.0"
   },
