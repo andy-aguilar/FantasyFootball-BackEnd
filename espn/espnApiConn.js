@@ -60,11 +60,11 @@ class EspnApiConn {
         })
     }
 
-    static async getLeagues(){
-        const userId = `EA55B21B-57D7-4D03-A64A-2A3C50A10022`
-        const userData = await axios.get(`https://fan.api.espn.com/apis/v2/fans/%7BEA55B21B-57D7-4D03-A64A-2A3C50A10022%7D?featureFlags=challengeEntries&featureFlags=expandAthlete&featureFlags=isolateEvents&showAirings=buy,live,replay&displayEvents=true&displayNow=true&displayRecs=true&recLimit=5&userId=%7BEA55B21B-57D7-4D03-A64A-2A3C50A10022%7D&source=ESPN.com+-+FAM&lang=en&section=espn&region=us`, {
+    static async getLeagues(espnS2, userId){
+        
+        const userData = await axios.get(`https://fan.api.espn.com/apis/v2/fans/%7B${userId}%7D?featureFlags=challengeEntries&featureFlags=expandAthlete&featureFlags=isolateEvents&showAirings=buy,live,replay&displayEvents=true&displayNow=true&displayRecs=true&recLimit=5&userId=%7${userId}%7D&source=ESPN.com+-+FAM&lang=en&section=espn&region=us`, {
             headers:{
-                cookie: "espn_s2=AECPR9CSh6x6jxSG9ssT27%2B5hFi5Q%2BNu4nI0ufSbt%2FawuGXvFZcsqVngqO%2B%2FyYsI1LQAmNI80Y62RW8fIjr1lgaS57wZV%2B2Jp%2B62UKZeXVIbH%2Fs7Sd8t9jCiL887forlV2%2Bs%2BUG2OsGftcMibUCHCazwgZ5ZrmisHAzozHsRFDOgQUCgi%2FT825x5Ylo%2FT1HNitSzo0IGZzwB%2FJoG9cVcZ0Dx67bdW%2Bv6NgaAa4jtKRu8lSzo6pbUIUweGXQJ9rqjbSgKTsk2ZQYSZJXKTwA4d8JkN%2FA8d3VVVeF%2B0gJnSx2pLG%2FOrIHGZMPzNFrPR9YCNeQ%3D"
+                cookie: `espn_s2=${espnS2}`
             }
         })
         return userData.data.preferences.filter(object => object.type.id == 9).map(league => league.metaData.entry.groups[0].groupId)
