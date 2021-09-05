@@ -41,4 +41,4 @@ const espnSocket = async(socket) => {
     });
 }
 
-module.exports(espnSocket)
+module.exports=espnSocket
