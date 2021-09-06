@@ -13,6 +13,9 @@ const options = {cors: {
     allowedHeaders: ["my-custom-header"],
     credentials: true
 }};
+
+app.use(bodyParser.json())
+
 const io = require("socket.io")(httpServer, options);
 
 const port = process.env.PORT || 4001;
